@@ -15,16 +15,16 @@ app.listen(3000, function () {
 var routes = require('./routes/');
 app.use('/', routes);
 
-app.use("/:path",function (req,res,next){
-	console.log(req.method + " /" + req.params.path);
-	next();
-});
+// app.use("/:path",function (req,res,next){
+// 	console.log(req.method + " /" + req.params.path);
+// 	next();
+// });
 
-app.use('/special', function(req,res,next) {
-	console.log("User is special!");
-	console.log(res.statusCode);
-	next();
-});
+// app.use('/special', function(req,res,next) {
+// 	console.log("User is special!");
+// 	console.log(res.statusCode);
+// 	next();
+// });
 app.use(express.static('public'));
 
 

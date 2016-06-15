@@ -1,16 +1,18 @@
 var _ = require('lodash');
 var data =[];
+var uniqueID=1;
 
 function add (name, text) {
-  data.push({ name: name, text: text });
+  data.push({ name: name, text: text, id: uniqueID });
+  uniqueID++;
 }
 
 function list () {
   return _.cloneDeep(data);
 }
 
-function find (properties) {
-  return _.cloneDeep(_.filter(data, properties));
+function find (keyValuePair) {
+  return _.cloneDeep(_.filter(data, keyValuePair));
 }
 
 module.exports = { add: add, list: list, find: find };
@@ -36,5 +38,7 @@ for (var i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
 
-add("Billy", "How dose this thing work?");
+add("Billy Smith", "How dose this thing work?");
 add("Suzy", "Billy is dumb.")
+
+
