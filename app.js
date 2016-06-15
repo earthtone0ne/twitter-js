@@ -1,7 +1,11 @@
-//test
 var express = require('express');
 var app = express();
+var swig = require('swig')
 
+app.engine("html", swig.renderFile);
+app.set("view engine", "html");
+app.set("views", __dirname + "/views");
+swig.setDefaults({ cache: false });
 
 app.listen(3000, function () {
 	console.log("Listening");
@@ -21,7 +25,8 @@ app.use('/special', function(req,res,next) {
 
 
 app.get('/', function(req,res,next){
-	res.send('Hey!\n')
+	var people = [{name: "Zaphod"}, {name: "Arthur"}, {name: "Trillian"}]
+	res.render("index", {title: "Home Sweet Home", people: people})
 });
 
 app.get('/special', function(req,res,next){
